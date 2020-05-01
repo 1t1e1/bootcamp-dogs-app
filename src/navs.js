@@ -3,25 +3,24 @@ import Homepage from "./containers/Homepage";
 const navs = [
     {
         path: "/",
-        title: "Anasayfa"
+        title: "Anasayfa",
     },
     {
         path: "/tur/cavalier-king-charles-spaniel",
-        title: "Cavalierler"
+        title: "Cavalierler",
     },
     {
         path: "/tur/golden-retriever",
-        title: "Goldens"
+        title: "Goldens",
     },
     {
         path: "/tur/Chihuahua",
-        title: "Chihuahua"
+        title: "Chihuahua",
     },
     {
         path: "/hakkinda",
-        title: "Hakkinda"
+        title: "Hakkinda",
     },
 ];
-
 
 export default navs;

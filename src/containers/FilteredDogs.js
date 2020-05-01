@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import dogs from "../dogsdata";
 
 const FilteredDogs = (props) => {
@@ -9,11 +9,9 @@ const FilteredDogs = (props) => {
             <h1>Secilen Tur: {secilenTur}</h1>
             <ul>
                 <ul>
-                    {
-                        filteredDogs.map((dog) => {
-                            return <li key={dog.id}>{dog.name}</li>
-                        })
-                    }
+                    {filteredDogs.map((dog) => {
+                        return <li key={dog.id}>{dog.name}</li>;
+                    })}
                 </ul>
             </ul>
         </div>
