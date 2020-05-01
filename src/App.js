@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import routes from "./routes";
 import Homepage from "./containers/Homepage";
 import FilteredDogs from "./containers/FilteredDogs";
+import DogProfile from "./containers/DogProfile";
 
 class App extends React.Component {
     render() {
@@ -23,10 +24,12 @@ class App extends React.Component {
                         exact
                         component={FilteredDogs}
                     />
+                    <Route path="/detail/:dogId" exact component={DogProfile} />
                     <Route
                         component={() => (
                             <div>
-                                <h1>404 sayfa bulununamadi</h1>
+                                {" "}
+                                <h1>404 sayfa bulununamadi</h1>{" "}
                             </div>
                         )}
                     />

@@ -4,8 +4,8 @@ import { Button } from "reactstrap";
 import FavoriteActions from "../components/FavoriteActions";
 import Dog from "../components/Dog";
 import axios from "axios";
-
-const apiHost = "MOCK API URL";
+import { apiHost } from "../personalConfig";
+import { Link } from "react-router-dom";
 
 class Homepage extends React.Component {
     constructor(props) {
@@ -95,17 +95,20 @@ class Homepage extends React.Component {
                 </div>
             );
         }
+        let path = "/detail/";
         return (
             <div>
                 <ul>
                     {dogs.map((dog) => {
                         return (
-                            <Dog
-                                toggle={this.toggle}
-                                id={dog.id}
-                                getStatus={this.getStatus}
-                                {...dog}
-                            />
+                            <Link to={path + dog.id}>
+                                <Dog
+                                    toggle={this.toggle}
+                                    id={dog.id}
+                                    getStatus={this.getStatus}
+                                    {...dog}
+                                />
+                            </Link>
                         );
                     })}
                 </ul>
