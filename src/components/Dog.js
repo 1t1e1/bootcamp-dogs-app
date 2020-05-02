@@ -2,7 +2,7 @@ import React from "react";
 import FavoriteActions from "./FavoriteActions";
 import { Link } from "react-router-dom";
 
-const Dog = ({ id, name, toggle, getStatus }) => {
+const Dog = ({ id, name, toggle, getStatus, color, buttonText }) => {
     const path = "/detail/";
     return (
         <li
@@ -21,7 +21,13 @@ const Dog = ({ id, name, toggle, getStatus }) => {
                     {name}
                 </span>
             </Link>
-            <FavoriteActions toggle={toggle} id={id} getStatus={getStatus} />
+            <FavoriteActions
+                toggle={toggle}
+                id={id}
+                getStatus={getStatus}
+                color={color}
+                buttonText={buttonText}
+            />
         </li>
     );
 };
