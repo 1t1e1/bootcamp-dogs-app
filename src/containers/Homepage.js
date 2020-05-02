@@ -5,7 +5,6 @@ import FavoriteActions from "../components/FavoriteActions";
 import Dog from "../components/Dog";
 import axios from "axios";
 import { apiHost } from "../personalConfig";
-import { Link } from "react-router-dom";
 
 class Homepage extends React.Component {
     constructor(props) {
@@ -95,20 +94,17 @@ class Homepage extends React.Component {
                 </div>
             );
         }
-        let path = "/detail/";
         return (
             <div>
                 <ul>
                     {dogs.map((dog) => {
                         return (
-                            <Link to={path + dog.id}>
-                                <Dog
-                                    toggle={this.toggle}
-                                    id={dog.id}
-                                    getStatus={this.getStatus}
-                                    {...dog}
-                                />
-                            </Link>
+                            <Dog
+                                toggle={this.toggle}
+                                id={dog.id}
+                                getStatus={this.getStatus}
+                                {...dog}
+                            />
                         );
                     })}
                 </ul>
