@@ -34,12 +34,20 @@ const Dog = ({ id, name, toggle, getStatus, isToggling }) => {
     );
 };
 
-Dog.defaultProps = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    toggle: PropTypes.function,
-    getStatus: PropTypes.function,
-    isToggling: PropTypes.boolean,
+Dog.propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    toggle: PropTypes.func.isRequired,
+    getStatus: PropTypes.func.isRequired,
+    isToggling: PropTypes.bool.isRequired,
 };
+
+// Dog.defaultProps = {
+// id: "11111"
+// name: "name of dog",
+// toggle:
+// getStatus:
+// isToggling:
+// };
 
 export default Dog;
