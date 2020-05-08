@@ -3,6 +3,8 @@ import dogs from "../dogsdata";
 import Dog from "../components/Dog";
 import axios from "axios";
 import { apiHost } from "../personalConfig";
+import { connect } from "react-redux";
+import { addFavorite, removeFavorite } from "../redux/actions";
 
 class Homepage extends React.Component {
     constructor(props) {
@@ -107,6 +109,7 @@ class Homepage extends React.Component {
                 </div>
             );
         }
+        console.log(this.props.favorites);
         return (
             <div>
                 <ul>
@@ -129,4 +132,12 @@ class Homepage extends React.Component {
     }
 }
 
-export default Homepage;
+const mapStateToProps = (state /*, ownProps*/) => {
+    return {
+        favorites: state.favorites,
+    };
+};
+
+const mapDispatchToProps = { addFavorite, removeFavorite };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
