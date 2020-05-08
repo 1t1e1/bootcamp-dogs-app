@@ -1,6 +1,7 @@
 import React from "react";
 import FavoriteActions from "./FavoriteActions";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Dog = ({ id, name, toggle, getStatus, isToggling }) => {
     const path = "/detail/";
@@ -31,6 +32,14 @@ const Dog = ({ id, name, toggle, getStatus, isToggling }) => {
             />
         </li>
     );
+};
+
+Dog.defaultProps = {
+    id: PropTypes.string,
+    name: PropTypes.string,
+    toggle: PropTypes.function,
+    getStatus: PropTypes.function,
+    isToggling: PropTypes.boolean,
 };
 
 export default Dog;
