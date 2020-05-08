@@ -11,7 +11,7 @@ class Homepage extends React.Component {
         this.state = {
             favorites: [],
             loadingFavorites: false,
-            waitApiProcess: false,
+            waitApiProcess: "",
         };
     }
     componentDidMount() {
@@ -48,21 +48,29 @@ class Homepage extends React.Component {
             (favorite) => favorite.dogId === dogId,
         );
         if (foundDog) {
-            axios
-                .delete(`${apiHost}/favorites/${foundDog.id}`)
-                .then((result) => {
-                    this.setState({
-                        favorites: this.state.favorites.filter(
-                            (dog) => dog.dogId !== dogId,
-                        ),
-                    });
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+            this.setState(
+                {
+                    waitApiProcess: dogId,
+                },
+                () => {
+                    axios
+                        .delete(`${apiHost}/favorites/${foundDog.id}`)
+                        .then((result) => {
+                            this.setState({
+                                favorites: this.state.favorites.filter(
+                                    (dog) => dog.dogId !== dogId,
+                                ),
+                                waitApiProcess: false,
+                            });
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
+                },
+            );
         } else {
             // window.localStorage.setItem("favorites", JSON.stringify(this.state.favorites));
-            this.setState({ waitApiProcess: true }, () => {
+            this.setState({ waitApiProcess: dogId }, () => {
                 axios
                     .post(`${apiHost}/favorites`, {
                         dogId,
@@ -75,6 +83,9 @@ class Homepage extends React.Component {
                         });
                     })
                     .catch((err) => {
+                        this.setState({
+                            waitApiProcess: false,
+                        });
                         console.log(err);
                     });
             });
@@ -100,36 +111,17 @@ class Homepage extends React.Component {
             <div>
                 <ul>
                     {dogs.map((dog) => {
-                        let color = "info";
-                        let buttonText = "islem yapiliyor";
-                        if (this.getStatus(dog.id)) {
-                            color = "danger";
-                            buttonText = "Favorilerden Cikar";
-                        } else {
-                            color = "primary";
-                            buttonText = "Favoriye Ekle";
-                        }
-                        if (this.state.waitApiProcess) {
-                            return (
-                                <Dog
-                                    toggle={this.toggle}
-                                    id={dog.id}
-                                    getStatus={this.getStatus}
-                                    {...dog}
-                                    buttonText={buttonText}
-                                />
-                            );
-                        } else {
-                            return (
-                                <Dog
-                                    toggle={this.toggle}
-                                    id={dog.id}
-                                    getStatus={this.getStatus}
-                                    {...dog}
-                                    buttonText={buttonText}
-                                />
-                            );
-                        }
+                        return (
+                            <Dog
+                                key={dog.id}
+                                toggle={this.toggle}
+                                getStatus={this.getStatus}
+                                isToggling={
+                                    this.state.waitApiProcess === dog.id
+                                }
+                                {...dog}
+                            />
+                        );
                     })}
                 </ul>
             </div>
