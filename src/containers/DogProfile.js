@@ -23,11 +23,11 @@ const DogProfile = (props) => {
             <p> {id}</p>
             <p> {name} </p>
             <p> {description} </p>
-            <p> {image} </p>
             <p> {age} </p>
             <p> {published_at} </p>
             <p> {breed} </p>
             <p>{breedSlug}</p>
+            <img src={image} />
         </div>
     );
 };
