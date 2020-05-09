@@ -5,6 +5,11 @@ import PropTypes from "prop-types";
 
 const Dog = ({ id, name, toggle, getStatus, isToggling }) => {
     const path = "/detail/";
+    // console.log("id", id);
+    // ??? her fav eklendiginde tum app render oluyor.
+    // ama aslinda sadece o buttonun render olmasi gerekmiyor mu?
+    // bunu nasil yapabilirim.
+
     return (
         <li
             key={id}
