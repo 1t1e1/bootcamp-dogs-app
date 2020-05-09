@@ -1,12 +1,7 @@
-export const addFavorite = (id) => {
+import { TOGGLE_FAV } from "./type";
+export const toggleFavorite = (id) => {
     return {
-        type: "ADD_TO_FAV",
-        payload: id,
-    };
-};
-export const removeFavorite = (id) => {
-    return {
-        type: "REMOVE_FROM_FAV",
+        type: TOGGLE_FAV,
         payload: id,
     };
 };

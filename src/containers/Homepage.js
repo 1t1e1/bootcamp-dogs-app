@@ -4,7 +4,7 @@ import Dog from "../components/Dog";
 import axios from "axios";
 import { apiHost } from "../personalConfig";
 import { connect } from "react-redux";
-import { addFavorite, removeFavorite } from "../redux/actions";
+import { toggleFavorite } from "../redux/actions";
 
 class Homepage extends React.Component {
     constructor(props) {
@@ -117,7 +117,7 @@ class Homepage extends React.Component {
                         return (
                             <Dog
                                 key={dog.id}
-                                toggle={this.toggle}
+                                toggle={this.props.toggleFavorite}
                                 getStatus={this.getStatus}
                                 isToggling={
                                     this.state.waitApiProcess === dog.id
@@ -132,12 +132,12 @@ class Homepage extends React.Component {
     }
 }
 
-const mapStateToProps = (state /*, ownProps*/) => {
+const mapStateToProps = (state) => {
     return {
         favorites: state.favorites,
     };
 };
 
-const mapDispatchToProps = { addFavorite, removeFavorite };
+const mapDispatchToProps = { toggleFavorite };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
