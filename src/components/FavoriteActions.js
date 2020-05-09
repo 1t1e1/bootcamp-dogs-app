@@ -17,9 +17,11 @@ const FavoriteActions = (props) => {
     return (
         <div>
             {/* <Button
-
-color, buttonText i props olarak alinca problem olur, 
-Neden? arastir.
+??? 
+color, buttonText i props olarak alinca
+yani yukaridaki if leri dog veya homepage componentinde yapinca 
+ problem oluyor?
+Neden? Lifecycleri iyici arastir.
             
                 color={props.color}
                 onClick={() => {
