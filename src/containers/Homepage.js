@@ -95,7 +95,6 @@ class Homepage extends React.Component {
                 </div>
             );
         }
-        console.log(this.props.favorites);
         return (
             <div>
                 <ul>
@@ -119,6 +118,7 @@ class Homepage extends React.Component {
 const mapStateToProps = (state) => {
     return {
         favorites: state.favorites,
+        loading: state.loading,
     };
 };
 
