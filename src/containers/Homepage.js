@@ -4,7 +4,6 @@ import Dog from "../components/Dog";
 import axios from "axios";
 import { apiHost } from "../personalConfig";
 import { connect } from "react-redux";
-import { toggleFavorite } from "../redux/actions";
 
 class Homepage extends React.Component {
     constructor(props) {
@@ -88,13 +87,6 @@ class Homepage extends React.Component {
     //     }
     // };
 
-    getStatus = (dogId) => {
-        const foundDog = this.props.favorites.find(
-            (favorite) => favorite === dogId,
-        );
-        return foundDog;
-    };
-
     render() {
         if (this.state.loadingFavorites) {
             return (
@@ -111,8 +103,6 @@ class Homepage extends React.Component {
                         return (
                             <Dog
                                 key={dog.id}
-                                toggle={this.props.toggleFavorite}
-                                getStatus={this.getStatus}
                                 isToggling={
                                     this.state.waitApiProcess === dog.id
                                 }
@@ -132,6 +122,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = { toggleFavorite };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
+export default connect(mapStateToProps, null)(Homepage);

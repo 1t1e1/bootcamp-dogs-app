@@ -3,7 +3,7 @@ import FavoriteActions from "./FavoriteActions";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Dog = ({ id, name, toggle, getStatus, isToggling }) => {
+const Dog = ({ id, name, isToggling }) => {
     const path = "/detail/";
     // console.log("id", id);
     // ??? her fav eklendiginde tum app render oluyor.
@@ -28,9 +28,7 @@ const Dog = ({ id, name, toggle, getStatus, isToggling }) => {
                 </span>
             </Link>
             <FavoriteActions
-                toggle={toggle}
                 id={id}
-                getStatus={getStatus}
                 // color={color}
                 // buttonText={buttonText}
                 isToggling={isToggling}
@@ -42,16 +40,12 @@ const Dog = ({ id, name, toggle, getStatus, isToggling }) => {
 Dog.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    toggle: PropTypes.func.isRequired,
-    getStatus: PropTypes.func.isRequired,
     isToggling: PropTypes.bool.isRequired,
 };
 
 // Dog.defaultProps = {
 // id: "11111"
 // name: "name of dog",
-// toggle:
-// getStatus:
 // isToggling:
 // };
 

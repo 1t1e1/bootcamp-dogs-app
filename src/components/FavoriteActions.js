@@ -1,12 +1,15 @@
 import React from "react";
 import { Button } from "reactstrap";
+import { connect } from "react-redux";
+import { toggleFavorite } from "../redux/actions";
 
 const FavoriteActions = (props) => {
+    const foundDog = props.favorites.find((favorite) => favorite === props.id);
     let color, buttonText;
     if (props.isToggling) {
         color = "secondary";
         buttonText = "islem yapiliyor";
-    } else if (props.getStatus(props.id)) {
+    } else if (foundDog) {
         color = "danger";
         buttonText = "Favorilerden Cikar";
     } else {
@@ -37,7 +40,7 @@ Neden? Lifecycleri iyici arastir.
                 disabled={props.isToggling}
                 color={color}
                 onClick={() => {
-                    props.toggle(props.id);
+                    props.toggleFavorite(props.id);
                 }}
             >
                 {buttonText}
@@ -46,4 +49,12 @@ Neden? Lifecycleri iyici arastir.
     );
 };
 
-export default FavoriteActions;
+const mapStateToProps = (state) => {
+    return {
+        favorites: state.favorites,
+    };
+};
+
+const mapDispatchToProps = { toggleFavorite };
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteActions);
