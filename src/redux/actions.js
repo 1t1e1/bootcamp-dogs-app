@@ -5,3 +5,14 @@ export const toggleFavorite = (id) => {
         payload: id,
     };
 };
+
+export const toggleFavoriteAsync = (id) => {
+    return (dispatch) => {
+        setTimeout(() => {
+            dispatch(toggleFavorite(id));
+            setTimeout(() => {
+                dispatch(toggleFavorite(id));
+            }, 2000);
+        }, 1000);
+    };
+};

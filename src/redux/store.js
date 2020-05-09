@@ -3,10 +3,14 @@
 //  waitApiProcess: "",
 
 import { rootReducer } from "./reducer";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
 
 export const store = createStore(
     rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-        window.__REDUX_DEVTOOLS_EXTENSION__(),
+    // compose(
+    // window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    // window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(thunk),
+    // ),
 );

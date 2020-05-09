@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "reactstrap";
 import { connect } from "react-redux";
-import { toggleFavorite } from "../redux/actions";
+import { toggleFavorite, toggleFavoriteAsync } from "../redux/actions";
 
 const FavoriteActions = (props) => {
     const foundDog = props.favorites.find((favorite) => favorite === props.id);
@@ -40,7 +40,7 @@ Neden? Lifecycleri iyici arastir.
                 disabled={props.isToggling}
                 color={color}
                 onClick={() => {
-                    props.toggleFavorite(props.id);
+                    props.toggleFavoriteAsync(props.id);
                 }}
             >
                 {buttonText}
@@ -55,6 +55,9 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = { toggleFavorite };
+const mapDispatchToProps = {
+    toggleFavorite,
+    toggleFavoriteAsync,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoriteActions);
