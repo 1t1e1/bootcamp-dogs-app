@@ -1,4 +1,4 @@
-import { TOGGLE_FAV, PAGE_LOADING, BUTTON_TOGGLING } from "./type";
+import { TOGGLE_FAV, PAGE_LOADING, BUTTON_PROCESS } from "./type";
 import { combineReducers } from "redux";
 
 const favoritesReducer = (state = [], action) => {
@@ -18,15 +18,16 @@ const favoritesReducer = (state = [], action) => {
 };
 
 const loadingReducer = (
-    state = { pageLoading: true, buttonToggling: false },
+    state = { pageLoading: true, buttonProcess: "" },
     action,
 ) => {
     switch (action.type) {
         case PAGE_LOADING:
             state.pageLoading = action.payload;
             return state;
-        case BUTTON_TOGGLING:
-            state.buttonToggling = action.payload;
+        case BUTTON_PROCESS:
+            // id  tutmasi gerekiyor.
+            state.buttonProcess = action.payload;
         default:
             return state;
     }

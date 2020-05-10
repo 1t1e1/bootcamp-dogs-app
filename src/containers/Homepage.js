@@ -103,7 +103,8 @@ class Homepage extends React.Component {
                             <Dog
                                 key={dog.id}
                                 isToggling={
-                                    this.state.waitApiProcess === dog.id
+                                    this.props.loading.buttonProcess === dog.id
+                                    // this.state.waitApiProcess === dog.id
                                 }
                                 {...dog}
                             />
